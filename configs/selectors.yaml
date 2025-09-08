@@ -1,0 +1,72 @@
+category:
+  breadcrumb:
+  - .breadcrumb
+  - .breadcrumb li
+  - nav.breadcrumb
+  next_page:
+  - a.next
+  - a[rel='next']
+  - .pagination .next
+  - .paging a.next
+  product_cards:
+  - .listproduct .item
+  - .listproduct .item a
+  - .product-item
+  product_links:
+  - .listproduct .item a[href]
+  - .item-img a[href]
+  - h3 a[href]
+home:
+  category_links:
+  - .main-menu-categories a[href]
+  - .list-cates a[href]
+  - .gr-cates a[href]
+  - .cate-item a[href]
+  navigation_menu:
+  - .main-menu a
+  - .main-menu-header a
+  - nav a[href]
+product_detail:
+  brand:
+  - '[data-brand]'
+  - .brand
+  - a[href*='brand']
+  discount_percent:
+  - .percent
+  - .box-price-percent
+  - .discount-percent
+  gallery_images:
+  - .gallery img
+  - .product-images img
+  - .box01__show img
+  - .item-img img
+  name:
+  - h1
+  - .product-name
+  - .detail-title h1
+  price_old:
+  - .price-old
+  - .box-price-old
+  - .price-before
+  price_promo:
+  - .price-sale
+  - .price-promo
+  - .box-price-present
+  price_regular:
+  - .price
+  - .box-price-present
+  - .price-current
+  - .price-regular
+  rating:
+  - .rating
+  - .rating-star
+  - .vote-txt
+  specifications:
+  - .parameter
+  - .specifications
+  - .specs
+  - .parameter__list
+  specs_kv:
+  - .parameter__list li
+  - .specs tr
+  - .spec-item

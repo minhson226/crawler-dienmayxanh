@@ -1,0 +1,50 @@
+# Base configuration for DMX Crawler
+
+base_url: "https://www.dienmayxanh.com/"
+user_agent: "DMX-Crawler/1.0 (+https://github.com/minhson226/crawler-dienmayxanh)"
+
+# Crawling behavior
+robots_check: true
+concurrency: 3
+delay_range: [1, 3]  # Random delay between requests (seconds)
+max_products: 0      # 0 = unlimited
+max_pages_per_category: 0  # 0 = unlimited
+request_timeout: 30
+max_retries: 3
+backoff_factor: 2.0
+
+# Browser configuration  
+use_playwright: "auto"  # auto/static/always
+browser_type: "chromium"
+headless: true
+viewport_width: 1920
+viewport_height: 1080
+
+# URL patterns
+start_paths:
+  - "/"
+  - "/dien-thoai"
+  - "/may-tinh-bang" 
+  - "/laptop"
+  - "/gia-dung"
+
+include_patterns:
+  - ".*dienmayxanh\\.com.*"
+
+exclude_patterns:
+  - ".*\\.(pdf|doc|docx|xls|xlsx|zip|rar)$"
+  - ".*/search.*"
+  - ".*/ajax.*"
+  - ".*/api/.*"
+
+# Database
+db_pool_size: 5
+db_max_overflow: 10
+
+# Checkpointing
+checkpoint_interval: 100  # Save progress every N products
+enable_resume: true
+
+# Logging
+log_level: "INFO"
+log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
