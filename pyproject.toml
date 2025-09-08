@@ -1,0 +1,82 @@
+[tool.poetry]
+name = "dmx-crawler"
+version = "0.1.0"
+description = "Production-grade crawler for dienmayxanh.com"
+authors = ["Senior Engineer <engineer@example.com>"]
+readme = "README.md"
+packages = [{include = "dmx"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+playwright = "^1.40.0"
+httpx = "^0.25.0"
+selectolax = "^0.3.17"
+beautifulsoup4 = "^4.12.0"
+sqlalchemy = "^2.0.0"
+pydantic = "^2.0.0"
+tenacity = "^8.2.0"
+requests-cache = "^1.1.0"
+typer = "^0.9.0"
+pyyaml = "^6.0"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.0"
+aiofiles = "^23.2.0"
+fake-useragent = "^1.4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-playwright = "^0.4.0"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.1.0"
+black = "^23.9.0"
+ruff = "^0.0.292"
+isort = "^5.12.0"
+mypy = "^1.6.0"
+pre-commit = "^3.5.0"
+
+[tool.poetry.scripts]
+dmx-cli = "dmx.main:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "ICN", "PIE", "T20", "RET", "SIM", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "PERF", "RUF"]
+ignore = ["E501", "RET504", "TRY003", "PLR0913", "PLR0912", "PLR0915"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict_optional = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests", 
+    "live: Live tests against real website"
+]
+
+[tool.coverage.run]
+source = ["dmx"]
+omit = ["*/tests/*", "*/migrations/*"]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false

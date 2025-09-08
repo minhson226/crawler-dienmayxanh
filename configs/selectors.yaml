@@ -1,0 +1,276 @@
+# DMX Crawler Selectors Configuration
+# Auto-generated from HTML structure analysis
+
+home:
+  category_links:
+    - "nav a[href*='/may-lanh']"
+    - "nav a[href*='/tivi']" 
+    - "nav a[href*='/dien-thoai']"
+    - "nav a[href*='/tu-lanh']"
+    - "nav a[href*='/may-giat']"
+    - "nav a[href*='/may-loc-nuoc']"
+    - ".main-menu a[href^='/']"
+    - ".header__main a[href^='/']"
+    - ".submenu a[href^='/']"
+  
+  # Fallback selectors for category discovery
+  category_links_fallback:
+    - "a[href*='dienmayxanh.com/'][href*='/']"
+    - ".nav a, .menu a, .category a"
+
+category:
+  breadcrumb:
+    - ".breadcrumb"
+    - "nav.breadcrumb"
+    - "ul.breadcrumb"
+    - ".breadcrumb li"
+  
+  product_card_links:
+    - ".listproduct .item a"
+    - ".product-item a"
+    - ".item-product a"
+    - ".product-card a"
+    - "a[href*='/'][href*='-']"  # Product URLs typically have dashes
+  
+  product_card_info:
+    name:
+      - ".item h3"
+      - ".product-name"
+      - ".item-product h3"
+    price:
+      - ".price"
+      - ".price-current"
+      - ".item-price"
+    image:
+      - ".item img"
+      - ".product-img img"
+  
+  pagination:
+    next_page:
+      - "a.paging__next"
+      - "a[rel='next']"
+      - ".pagination .next"
+      - ".paging a:contains('>')"
+    page_numbers:
+      - ".pagination a"
+      - ".paging a"
+
+listing:
+  product_grid:
+    - ".listproduct"
+    - ".product-grid"
+    - ".products-list"
+  
+  product_items:
+    - ".listproduct .item"
+    - ".product-item"
+    - ".item-product"
+  
+  load_more:
+    - ".btn-load-more"
+    - ".load-more"
+    - "button[data-load-more]"
+
+product_detail:
+  # Basic product information
+  name:
+    - "h1"
+    - "h1.product-name"
+    - ".product-title h1"
+    - ".detail-title h1"
+  
+  # Pricing information
+  price_current:
+    - ".price-current"
+    - ".price-sale"
+    - ".current-price"
+    - ".price-new"
+    - "span[data-price]"
+  
+  price_original:
+    - ".price-old"
+    - ".price-original"
+    - ".old-price"
+    - ".price-before"
+  
+  discount_percent:
+    - ".percent-price"
+    - ".discount-percent"
+    - ".sale-percent"
+  
+  # Product details
+  brand:
+    - "a[href*='brand']"
+    - "li:contains('Hãng') span"
+    - ".brand-name"
+    - "[data-brand]"
+  
+  model:
+    - "li:contains('Model') span"
+    - ".model-name"
+    - "[data-model]"
+  
+  sku:
+    - "li:contains('Mã') span"
+    - ".product-code"
+    - "[data-sku]"
+    - ".sku"
+  
+  # Product specifications
+  specs_container:
+    - ".specs"
+    - ".specifications"
+    - ".product-specs"
+    - ".technical-specs"
+  
+  specs_groups:
+    - ".specs .group"
+    - ".spec-group"
+    - ".specifications .group"
+  
+  specs_items:
+    - ".specs tr"
+    - ".spec-item"
+    - ".specification-item"
+    - "li.spec-item"
+  
+  specs_key:
+    - "td:first-child"
+    - ".spec-key"
+    - ".spec-name"
+    - ".label"
+  
+  specs_value:
+    - "td:last-child"
+    - ".spec-value"
+    - ".value"
+  
+  # Images and gallery
+  main_image:
+    - ".product-image img"
+    - ".main-image img"
+    - ".hero-image img"
+  
+  gallery_images:
+    - ".gallery img"
+    - ".product-gallery img"
+    - ".thumbnail-list img"
+    - ".image-list img"
+  
+  # Product description
+  short_description:
+    - ".short-description"
+    - ".product-summary"
+    - ".excerpt"
+  
+  full_description:
+    - ".description"
+    - ".product-description"
+    - ".content"
+    - ".detail-content"
+  
+  # Availability and stock
+  availability:
+    - ".availability"
+    - ".stock-status"
+    - ".in-stock"
+    - ".out-of-stock"
+  
+  # Ratings and reviews
+  rating:
+    - ".rating"
+    - ".stars"
+    - ".review-rating"
+  
+  rating_count:
+    - ".rating-count"
+    - ".review-count"
+    - ".total-reviews"
+  
+  # Additional product info
+  warranty:
+    - "li:contains('Bảo hành') span"
+    - ".warranty-info"
+    - ".guarantee"
+  
+  origin:
+    - "li:contains('Xuất xứ') span"
+    - ".origin"
+    - ".made-in"
+  
+  # Category information
+  category_path:
+    - ".breadcrumb"
+    - ".category-path"
+    - "nav.breadcrumb"
+  
+  # Meta information
+  meta_title:
+    - "title"
+  
+  meta_description:
+    - "meta[name='description']"
+    - "meta[property='og:description']"
+
+# Dynamic content selectors (for Playwright)
+dynamic:
+  wait_for:
+    - ".price-current"
+    - ".product-name"
+    - ".specs"
+  
+  lazy_load_trigger:
+    - ".load-more"
+    - ".show-more"
+    - ".expand-specs"
+
+# Selectors for detecting page type
+page_detection:
+  is_homepage:
+    - ".header__main"
+    - ".main-menu"
+    - "title:contains('Siêu thị Điện máy XANH')"
+  
+  is_category:
+    - ".breadcrumb"
+    - ".listproduct"
+    - ".product-grid"
+  
+  is_product_detail:
+    - ".price-current, .price-sale"
+    - ".specs, .specifications"
+    - "h1 + .price, h1.product-name"
+  
+  is_listing:
+    - ".listproduct .item"
+    - ".product-item"
+    - ".pagination"
+
+# Error and edge case selectors
+error_detection:
+  not_found:
+    - ".error-404"
+    - ".not-found"
+    - "title:contains('404')"
+  
+  access_denied:
+    - ".access-denied"
+    - ".forbidden"
+    - "title:contains('403')"
+  
+  temporarily_unavailable:
+    - ".maintenance"
+    - ".temporarily-unavailable"
+    - "title:contains('503')"
+
+# Captcha and bot detection
+bot_detection:
+  captcha:
+    - ".captcha"
+    - ".recaptcha"
+    - "#captcha"
+  
+  rate_limit:
+    - "title:contains('Too Many Requests')"
+    - ".rate-limit"
+    - "title:contains('429')"

@@ -1,0 +1,62 @@
+# DMX Crawler Configuration
+base_url: "https://www.dienmayxanh.com"
+user_agent: "DMX-Crawler/1.0 (Educational Purpose; +https://github.com/crawler)"
+
+# Rate limiting and concurrency
+rate_limit:
+  concurrency: 3
+  delay_range: [1, 3]  # seconds
+  max_requests_per_minute: 20
+  backoff_factor: 2
+  max_retries: 3
+
+# Robots.txt compliance
+robots:
+  respect: true
+  crawl_delay_override: null  # Use robots.txt value if null
+  check_interval: 3600  # seconds
+
+# Browser settings
+browser:
+  use_playwright: "auto"  # auto, static, always
+  headless: true
+  timeout: 30000  # milliseconds
+  viewport:
+    width: 1920
+    height: 1080
+
+# Crawler limits
+limits:
+  max_products: 1000
+  max_categories: 50
+  max_pages_per_category: 20
+  category_levels: 3
+
+# URL patterns
+patterns:
+  include:
+    - "/may-lanh*"
+    - "/dien-thoai*"
+    - "/tivi*"
+    - "/tu-lanh*"
+    - "/may-giat*"
+    - "/nha-bep*"
+    - "/loc-nuoc*"
+  exclude:
+    - "*/khuyen-mai*"
+    - "*/tin-tuc*"
+    - "*/blog*"
+    - "*utm_source=*"
+
+# Data storage
+storage:
+  save_raw_html: false
+  save_images_locally: false
+  deduplicate_by: "canonical_url"  # or "product_code"
+  update_existing: true
+
+# Cache settings
+cache:
+  enabled: true
+  expire_after: 3600  # seconds
+  backend: "sqlite"  # sqlite, redis, memory
